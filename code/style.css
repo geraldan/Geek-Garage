@@ -12,14 +12,17 @@ nav{
 button{
     background-color: transparent;
     border: none;
-    margin: 1em 0;
     padding: 1em;
     color: white;
     font-size: large;
     font-weight: bold;
 }
-.btn_1, .btn_2, .btn_3{
+#btn_1, #btn_2, #btn_3{
     border-right: 1px solid blanchedalmond;
+    cursor: pointer;
+}
+#btn_4{
+    cursor: pointer;
 }
 
 .geek{
@@ -35,15 +38,21 @@ button{
 }
 h2{
     font-family: 'BetonEF';
-    text-align: center;
+    display: flex;
+    justify-content: center;
     color: #4e44fe;
     font-size: 3em;
     text-shadow: 3px 3px 5px black;
     margin-bottom: 1em;
+    padding-top: 0.5em;
+}
+h3{
+    font-size: 1.5em;
+    margin-bottom: 1em;
 }
 p{
     text-align: center;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 .ilustration {
@@ -75,7 +84,7 @@ p{
 
 .ilustration img{
     position: relative;
-    right: 10%;
+    right: 7%;
     width: 35%;
     margin-top: 4em;
 }
@@ -90,16 +99,71 @@ p{
     overflow: hidden;
 }
 
-form{ 
+#gray ,#vienne ,#beynost{
+    display: none;
+    padding: 1em;
+    margin-left: 1em;
+    width: 300px;
+}
+#vienne p{
+    text-align: start;
+}
+
+#gray p{
+    text-align: start;
+}
+
+#beynost p{
+    text-align: start;
+}
+#OL_Icon_22, #OL_Icon_26, #OL_Icon_30{
+    cursor: pointer;
+}
+ .button_container{
     display: flex;
+    justify-content: center;
+}
+
+#button_modal{
+    margin: 20px auto;
+    background-color: blue;
+    border-radius: 0.5em;
+    cursor: pointer;
+    color: #ff0015;
+
+} 
+.centre input{
+    color: blueviolet;
+    background-color: blue;
+}
+.forme {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size:cover;
+    backdrop-filter: blur(5px);
+    z-index: 5;
+}
+form{ 
     flex-direction: column;
     background-color: #4e44fe;
+    opacity: 0.9;
     border-radius: 1em;
     box-shadow: 3px 3px 5px black;
     width: 50%;
     padding: 3em;
-    margin: auto;
     margin-bottom: 2em;
+    display: flex;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+#form{
+    position: absolute;
 }
 :focus{
     outline: none;
@@ -117,17 +181,86 @@ input{
     border: transparent;
     border-radius: 0.2em;
 }
+select{
+    margin-bottom: 2em;
+    padding: 0.5em;
+    border-radius: 0.2em;
+}
+
 textarea{
     margin-bottom: 2em;
     border-radius: 0.5em;
+    resize: none;
+    width: 100%;
+    
+
 }
+
 button[type=submit]{
     margin: auto;
     padding: 1em;
     background-color: blanchedalmond;
     border-radius: 0.5em;
-    width: 50%;
     cursor: pointer;
     color: #4e44fe;
 
 }
+
+@media screen and (max-width:1024px){
+    .ilustration img{
+        right: 2%;
+    }
+
+}
+
+@media screen and (max-width:600px){
+
+    nav{
+        text-align: center;
+    }
+    #btn_1, #btn_2, #btn_3, #btn_4{
+        font-size: 0.7em;
+        padding: 0;
+        border: none;
+    }
+    .prestationn p{
+        justify-content: center;
+    }
+    #map{
+        width: 300px;
+        height: 300px;
+    }
+    .prestation{
+        width: 50%;
+        height: 170px;
+        margin: auto;
+        padding: 1em;
+
+    }
+    .prestation p{
+        text-align: center;
+        padding: 0;
+        margin-bottom: 1em;
+    }
+    .ilustration img{
+        display: none;
+    }
+    label {
+        font-size: x-small;
+    }
+    button[type=submit];
+
+}
+
+@media screen and (max-width:425px){
+    .ilustration{
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+/* boud de code pour blocker le scroll */
+/* #blocantiscroll
+{
+    height:100%;
+    overflow:hidden;
+} */
