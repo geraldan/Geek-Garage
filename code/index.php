@@ -1,5 +1,16 @@
-<?php ?>
-<!--
+<?php
+//connection a la basse de donné façon simplifier en faisant une feuille separer pour ce conetcter a la basse de donnee ici nommé pdo.php et 'require' pour apeler la page ceci est une fonction
+require ("pdo.php");
+$pdo = (new Connection())->pdo();
+
+//recuperation du select
+$sql = $pdo->prepare("SELECT * FROM centres ");
+// execute la requete
+$sql->execute();
+// afficher tout la table
+$cats = $sql->fetchAll();
+?>
+<!-- 
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -56,7 +67,7 @@ if(isset($_POST['name'])){
     }
 :
 ?>
--->
+ -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -103,6 +114,9 @@ if(isset($_POST['name'])){
                 <p>lundi à vendredi 08:30–12:00, 13:30–17:00</p>
                 <p>samedi et dimanche Fermé</p>
                 <p>Téléphone : 03 84 76 90 83</p>
+                <div class="button_container">
+                    <button id="button_modal">Nous Contacter</button>
+                </div> 
             </div>
             <div id="vienne">
                 <h3>VIENNE : Immeuble Apollo, 30 Avenue Général Leclerc, 38200 Vienne </h3>
@@ -110,6 +124,9 @@ if(isset($_POST['name'])){
                 <p>lundi à vendredi 08:30–12:00, 13:30–17:00</p>
                 <p>samedi et dimanche Fermé</p>
                 <p>Téléphone : 03 84 76 52 44</p>
+                <div class="button_container">
+                    <button id="button_modal">Nous Contacter</button>
+                </div>
             </div>
             <div id="beynost">
                 <h3>BEYNOST : 110 Rue du Chat Botté, 01700 Beynost</h3>
@@ -117,17 +134,13 @@ if(isset($_POST['name'])){
                 <p>lundi à vendredi 08:30–12:00, 13:30–17:00</p>
                 <p>samedi et dimanche Fermé</p>
                 <p>Téléphone : 03 84 76 52 44</p>
+                <div class="button_container">
+                    <button id="button_modal">Nous Contacter</button>
+                </div>
             </div>
+            
         </div>
         
-        
-        
-        <h2 id="contact">CONTACT</h2>
-
-
-         <div class="button_container">
-            <button id="button_modal">Nous Contacter</button>
-        </div> 
                                                 <!--form-->
         <div class="send"></div>
         <div  class="forme" id="boxForm">
@@ -140,9 +153,9 @@ if(isset($_POST['name'])){
                 <label for="center">Centre</label>
                 <select name="center" required>
                     <option value="">-sélectionnez un centre-</option>
-                    <option value="gray">Gray</option>
-                    <option value="vienne">Vienne</option>
-                    <option value="beynost">Beynost</option>
+                    <?php foreach ($cats as $cat ): ?>
+                        <option value="<?= $cat['nom']?>"><?= $cat['nom']?></option>
+                    <?php endforeach; ?>
                 </select>
                 <label  name="objet" for="">Objet :</label>
                 <input name="objet" type="text" required>
@@ -151,8 +164,18 @@ if(isset($_POST['name'])){
                 <button type="submit">ENVOYER</button>
                 
             </form>
-            -->
+            
         </div>
     </div>
+    <footer>
+        <img src="logo.svg" alt="">
+        <div> 
+            <p>Téléphone : +33(0)3 84 76 52 44</p>
+            <p>Email : mail@mail.com</p>
+        </div>
+    </footer>
+
+
+
 </body>
 </html>
